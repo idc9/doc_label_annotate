@@ -55,11 +55,11 @@ def display_document(df):
     if len(df.columns) == 3:
         doc_name, text, label = \
             df.iloc[st.session_state.current_index, [0, 1, 2]]
-        doc_name_title, text_title, label_title = df.columns[0, 1, 2]
+        doc_name_title, text_title, label_title = df.columns[[0, 1, 2]]
     else:
         text, label = \
             df.iloc[st.session_state.current_index, [0, 1]]
-        text_title, label_title = df.columns[0, 1]
+        text_title, label_title = df.columns[[0, 1]]
 
         doc_name_title = "Document"
         doc_name = st.session_state.current_index
