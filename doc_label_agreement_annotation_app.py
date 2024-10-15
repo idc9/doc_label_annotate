@@ -64,14 +64,15 @@ def display_document(df):
     # col1, col2 = st.columns([3, 1])
     col1, col2 = st.columns([5, 1.5])
     with col1:
-        st.markdown(f"<h3 style='text-decoration: underline;'>{text_column}</h3>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-decoration: underline;'>{text_column}</h5>", unsafe_allow_html=True)
         # st.subheader(text_column)
-        st.write(f"<div style='height: 50px; overflow-y: auto;'>{text}</div>", unsafe_allow_html=True)
+        st.write(f"<div style='height: 50px; overflow-y: auto; color: red;'>{text}</div>", unsafe_allow_html=True)
+
 
     with col2:
         # st.subheader(label_column)
-        st.markdown(f"<h3 style='text-decoration: underline;'>{label_column}</h3>", unsafe_allow_html=True)
-        st.write(f"<div style='height: 50px; overflow-y: auto;'>{label}</div>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-decoration: underline;'>{label_column}</h5>", unsafe_allow_html=True)
+        st.write(f"<div style='height: 50px; overflow-y: auto; color: red;'>{label}</div>", unsafe_allow_html=True)
 
     # Add this line after displaying the document text and label in display_document function
     st.markdown("---")
