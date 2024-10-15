@@ -64,7 +64,7 @@ def display_document(df):
         doc_name_title = "Document"
         doc_name = st.session_state.current_index
 
-    st.write(f"{doc_name_title} {doc_name} ({st.session_state.current_index + 1}/{total_docs})")
+    st.write(f"{doc_name_title} = {doc_name} ({st.session_state.current_index + 1}/{total_docs})")
 
     # col1, col2 = st.columns([3, 1])
     col1, col2 = st.columns([5, 1.5])
