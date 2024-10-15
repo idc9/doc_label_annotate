@@ -82,7 +82,7 @@ def feedback_buttons(df):
     is_done = st.session_state.current_index >= total_docs
 
     # Place the prompt text before the buttons
-    st.write("Is the provided label correct?")
+    st.write("Is the label provided for each document correct?")
 
     correct_col, wrong_col, unsure_col = st.columns([1, 1, 1])
     with correct_col:
