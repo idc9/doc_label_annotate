@@ -45,7 +45,7 @@ def load_file(uploaded_file):
     if len(df.columns) < 2:
         st.error("The file must have at least 2 columns.")
         return None
-    if len(df.shape[0]) == 0:
+    if df.shape[0] == 0:
         st.error("The file should have at least one entry.")
         return None
 
