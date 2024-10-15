@@ -49,29 +49,33 @@ def load_file(uploaded_file):
 
 # Function to display document navigation and content
 def display_document(df):
-    total_docs = len(df)
-    doc_name = df.iloc[st.session_state.current_index, 0] if len(df.columns) == 3 else st.session_state.current_index
-    st.write(f"Document {doc_name} ({st.session_state.current_index + 1}/{total_docs})")
-    
-    # Determine the indices based on the number of columns
+    total_docs = df.shape[0]
+
+    # pull out info for this document
     if len(df.columns) == 3:
-        text, label = df.iloc[st.session_state.current_index, 1], df.iloc[st.session_state.current_index, 2]
-        text_column, label_column = df.columns[1], df.columns[2]
+        doc_name, text, label = \
+            df.iloc[st.session_state.current_index, [0, 1, 2]]
+        doc_name_title, text_title, label_title = df.columns[0, 1, 2]
     else:
-        text, label = df.iloc[st.session_state.current_index, 0], df.iloc[st.session_state.current_index, 1]
-        text_column, label_column = df.columns[0], df.columns[1]
+        text, label = \
+            df.iloc[st.session_state.current_index, [0, 1]]
+        text_title, label_title = df.columns[0, 1]
+
+        doc_name_title = "Document"
+        doc_name = st.session_state.current_index
+
+    st.write(f"{doc_name_title} {doc_name} ({st.session_state.current_index + 1}/{total_docs})")
 
     # col1, col2 = st.columns([3, 1])
     col1, col2 = st.columns([5, 1.5])
     with col1:
-        st.markdown(f"<h5 style='text-decoration: underline;'>{text_column}</h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-decoration: underline;'>{text_title}</h5>", unsafe_allow_html=True)
         # st.subheader(text_column)
         st.write(f"<div style='height: 50px; overflow-y: auto; color: red;'>{text}</div>", unsafe_allow_html=True)
 
-
     with col2:
         # st.subheader(label_column)
-        st.markdown(f"<h5 style='text-decoration: underline;'>{label_column}</h5>", unsafe_allow_html=True)
+        st.markdown(f"<h5 style='text-decoration: underline;'>{label_title}</h5>", unsafe_allow_html=True)
         st.write(f"<div style='height: 50px; overflow-y: auto; color: red;'>{label}</div>", unsafe_allow_html=True)
 
     # Add this line after displaying the document text and label in display_document function
