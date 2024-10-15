@@ -1,5 +1,7 @@
 """
 This script creates a streamlit app for users to annotate if they agree/disagree with provided document/label pairs.
+
+This code was written with assistance from ChatGPT.
 """
 import streamlit as st
 import pandas as pd
@@ -82,7 +84,7 @@ def feedback_buttons(df):
     is_done = st.session_state.current_index >= total_docs
 
     # Place the prompt text before the buttons
-    st.write("Is the label provided for each document correct?")
+    # st.write("")
 
     correct_col, wrong_col, unsure_col = st.columns([1, 1, 1])
     with correct_col:
@@ -99,7 +101,7 @@ def feedback_buttons(df):
     is_done = st.session_state.current_index >= total_docs
 
     # Display the prompt text above the buttons
-    st.write("Is the prediction correct? Keyboard shortcuts: c, w, u.")
+    st.write("Is the label provided for this document correct? Keyboard shortcuts: c, w, u.")
 
     # Use keyboard shortcuts with the custom button function
     correct_col, wrong_col, unsure_col = st.columns([1, 1, 1])
@@ -153,7 +155,7 @@ def download_annotations(df):
 def main():
     initialize_session_state()
     
-    st.title("Is the label correct?")
+    st.title("Is the label provided for each document correct?")
     
     # File uploader with reset check
     uploaded_file = st.\
