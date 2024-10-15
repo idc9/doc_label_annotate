@@ -45,6 +45,10 @@ def load_file(uploaded_file):
     if len(df.columns) < 2:
         st.error("The file must have at least 2 columns.")
         return None
+    if len(df.shape[0]) == 0:
+        st.error("The file should have at least one entry.")
+        return None
+
     return df
 
 # Function to display document navigation and content
@@ -64,7 +68,7 @@ def display_document(df):
         doc_name_title = "Document"
         doc_name = st.session_state.current_index
 
-    st.write(f"{doc_name_title} = {doc_name} ({st.session_state.current_index + 1}/{total_docs})")
+    st.write(f"{doc_name_title} = {doc_name} ({st.session_state.current_index + 1}/{total_docs} documents)")
 
     # col1, col2 = st.columns([3, 1])
     col1, col2 = st.columns([5, 1.5])
