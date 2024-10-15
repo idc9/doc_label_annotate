@@ -137,7 +137,7 @@ def go_back_button():
     st.write(" ")
     st.write(" ")
     st.write(" ")
-    if st.button("Go back to previous"):
+    if st.button("Go back to previous document"):
         if st.session_state.current_index > 0:
             st.session_state.current_index -= 1
             st.session_state.annotations.pop()
@@ -179,6 +179,7 @@ def main():
     if st.session_state.uploaded_file is not None:
         df = load_file(st.session_state.uploaded_file)
 
+        st.write("Annotation instructions: use the correct/wrong/unsure buttons (or keyboard shortcuts) to mark if provided label is correct the document. Download your annotations when you are done.")
         st.markdown("---")
 
         if df is not None:
@@ -193,7 +194,7 @@ def main():
             st.text_input("Notes",
                           key="user_note",
                           placeholder="Enter any notes here (ignore instructions about press enter to apply)")
-            
+
             # Go back button
             go_back_button()
 
